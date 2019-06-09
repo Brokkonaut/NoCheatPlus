@@ -1,3 +1,5 @@
+Attempted to update to 1.14, someone else pick this up, mostly method changes and conflicts with signs from what I recall.
+
 ### Build Status
 [![Build Status](https://semaphoreci.com/api/v1/captainobvious0/nocheatplus/branches/master/badge.svg)](https://semaphoreci.com/captainobvious0/nocheatplus)
 
