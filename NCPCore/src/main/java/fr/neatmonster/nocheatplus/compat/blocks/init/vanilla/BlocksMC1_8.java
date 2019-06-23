@@ -14,6 +14,8 @@
  */
 package fr.neatmonster.nocheatplus.compat.blocks.init.vanilla;
 
+import fr.neatmonster.nocheatplus.utilities.Misc;
+import fr.neatmonster.nocheatplus.utilities.map.MaterialUtil;
 import org.bukkit.Material;
 
 import fr.neatmonster.nocheatplus.compat.BridgeMaterial;
@@ -43,14 +45,15 @@ public class BlocksMC1_8 implements BlockPropertiesSetup {
 
         // Melon/pumpkin/like.
         BlockProps props = new BlockProps(BlockProperties.woodAxe, 1f, BlockProperties.secToMs(1.45, 0.70, 0.325, 0.2, 0.13, 0.075), 3f);
-        for (Material mat : new Material[] {
+        for (Material mat : Misc.concatenate(new Material[] {
                 BridgeMaterial.MELON,
                 Material.PUMPKIN,
                 Material.JACK_O_LANTERN,
-                // Same core breaking times, but behave different on efficiency + other tool (?): 
-                Material.WALL_SIGN,
-                BridgeMaterial.SIGN,
-        }) {
+        },
+				// Same core breaking times, but behave different on efficiency + other tool (?):
+				MaterialUtil.SIGNS,
+				MaterialUtil.WALL_SIGNS
+		)) {
             BlockProperties.setBlockProps(mat, props);
         }
 

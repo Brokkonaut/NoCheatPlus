@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import fr.neatmonster.nocheatplus.utilities.Misc;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -974,6 +975,12 @@ public class BlockProperties {
         blockFlags.put(material, blockFlags.get(material) & addFlag);
     }
 
+    private static void setBlocks(Collection<Material> materials, BlockProps props) {
+        for (Material material : materials) {
+            setBlock(material, props);
+        }
+    }
+
     private static void setBlock(Material material, BlockProps props) {
         if (!material.isBlock()) {
             // Let's not fail hard here.
@@ -1108,19 +1115,16 @@ public class BlockProperties {
         setFlag(Material.ICE, F_ICE);
 
         // Not ground (!).
-        for (final Material mat : new Material[]{
-                Material.WALL_SIGN, BridgeMaterial.SIGN,
-        }) {
+        for (final Material mat : Misc.toArray(MaterialUtil.WALL_SIGNS, MaterialUtil.SIGNS)) {
             // TODO: Might keep solid since it is meant to be related to block shapes rather ("original mc value").
             maskFlag(mat, ~(F_GROUND | F_SOLID));
         }
 
         // Ignore for passable.
-        for (final Material mat : new Material[]{
+        for (final Material mat : Misc.concatenate(new Material[]{
                 // More strictly needed.
-                BridgeMaterial.STONE_PRESSURE_PLATE, 
-                Material.WALL_SIGN, BridgeMaterial.SIGN,
-                BridgeMaterial.get("DIODE_BLOCK_ON"), 
+                BridgeMaterial.STONE_PRESSURE_PLATE,
+                BridgeMaterial.get("DIODE_BLOCK_ON"),
                 BridgeMaterial.get("DIODE_BLOCK_OFF"),
                 Material.BREWING_STAND,
                 // Compatibility.
@@ -1129,7 +1133,11 @@ public class BlockProperties {
                 BridgeMaterial.CAKE,
                 // Workarounds.
                 //				Material.COCOA,
-        }) {
+        },
+                // More strictly needed.
+                MaterialUtil.SIGNS,
+                MaterialUtil.WALL_SIGNS
+        )) {
             if (mat != null) {
                 setFlag(mat, F_IGN_PASSABLE);
             }
@@ -1352,8 +1360,8 @@ public class BlockProperties {
         }
         setBlock(Material.NOTE_BLOCK, new BlockProps(woodAxe, 0.8f, secToMs(1.2, 0.6, 0.3, 0.2, 0.15, 0.1)));
         final BlockProps pumpkinType = new BlockProps(woodAxe, 1, secToMs(1.5, 0.75, 0.4, 0.25, 0.2, 0.15));
-        setBlock(Material.WALL_SIGN, pumpkinType);
-        setBlock(BridgeMaterial.SIGN, pumpkinType);
+        setBlocks(MaterialUtil.SIGNS, pumpkinType);
+        setBlocks(MaterialUtil.WALL_SIGNS, pumpkinType);
         setBlock(Material.PUMPKIN, pumpkinType);
         setBlock(Material.JACK_O_LANTERN, pumpkinType);
         setBlock(BridgeMaterial.MELON, new BlockProps(noTool, 1, secToMs(1.45), 3));

@@ -265,7 +265,7 @@ public class InventoryListener  extends CheckListener implements JoinLeaveListen
         // Fast inventory manipulation check.
         if (fastClick.isEnabled(player, pData)) {
             final InventoryConfig cc = pData.getGenericInstance(InventoryConfig.class);
-            if (player.getGameMode() != GameMode.CREATIVE || !cc.fastClickSpareCreative || !cc.inventoryExemptions.contains(ChatColor.stripColor(event.getInventory().getName()))) {
+            if (player.getGameMode() != GameMode.CREATIVE || !cc.fastClickSpareCreative || !cc.inventoryExemptions.contains(ChatColor.stripColor(event.getView().getTitle()))) {
                 if (fastClick.check(player, now, 
                         event.getView(), slot, cursor, clicked, event.isShiftClick(), 
                         inventoryAction, data, cc, pData)) {  
@@ -361,10 +361,10 @@ public class InventoryListener  extends CheckListener implements JoinLeaveListen
         builder.append(view.getClass().getName());
 
         // Bottom inventory.
-        addInventory(player, view.getBottomInventory(), " , Bottom: ", builder);
+        addInventory(view, " , Bottom: ", builder);
 
         // Top inventory.
-        addInventory(player, view.getBottomInventory(), " , Top: ", builder);
+        addInventory(view, " , Top: ", builder);
         
         if (action != null) {
             builder.append(" , Action: ");
@@ -379,20 +379,12 @@ public class InventoryListener  extends CheckListener implements JoinLeaveListen
         debug(player, builder.toString());
     }
 
-    private void addInventory(final Player player, final Inventory inventory, final String prefix, 
-            final StringBuilder builder) {
+    private void addInventory(final InventoryView view, final String prefix, final StringBuilder builder) {
+        final Inventory inventory = view.getBottomInventory();
         builder.append(prefix);
-        if (inventory == null) {
-            builder.append("(none)");
-        }
-        else {
-            final String name = inventory.getName();
-            final String title = inventory.getTitle();
-            final boolean same = name == null && title == null || name != null && name.equals(title);
-            builder.append((same ? name : (name + "/" + title)));
-            builder.append("/");
-            builder.append(inventory.getClass().getName());
-        }
+        builder.append(view.getTitle());
+        builder.append("/");
+        builder.append(inventory.getClass().getName());
     }
 
     /**

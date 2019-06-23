@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import fr.neatmonster.nocheatplus.utilities.map.MaterialUtil;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -60,8 +61,8 @@ public class AutoSign extends Check {
         final BlockPlaceData data = pData.getGenericInstance(BlockPlaceData.class);
         final BlockPlaceConfig cc = pData.getGenericInstance(BlockPlaceConfig.class);
         Material mat = block.getType();
-        if (mat == BridgeMaterial.SIGN || mat == Material.WALL_SIGN) {
-            mat = Material.SIGN; // ITEM
+        if (MaterialUtil.WALL_SIGNS.contains(mat)) {
+            mat = MaterialUtil.wallSignToSign(mat); // ITEM
         }
         if (data.autoSignPlacedHash != BlockPlaceListener.getBlockPlaceHash(block, mat)){
             tags.add("block_mismatch");

@@ -45,10 +45,12 @@
 		<!-- <repository> <id>md_5-releases</id> <url>http://repo.md-5.net/content/repositories/releases/</url> 
 			</repository> <repository> <id>md_5-snapshots</id> <url>http://repo.md-5.net/content/repositories/snapshots/</url> 
 			</repository> -->
+		<!--
 		<repository>
 			<id>bukkit</id>
 			<url>http://repo.bukkit.org/content/groups/public/</url>
 		</repository>
+		-->
 	</repositories>
 
 	<description>The initial pom design had been taken from mbax (GitHub).
@@ -73,8 +75,8 @@ TODO: Better place for descriptions like this?</description>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -442,6 +442,22 @@ public class MaterialUtil {
                     // , ...
                     ), "trap_door"));
 
+    public static final Set<Material> SIGNS = Collections.unmodifiableSet(addBlocks(
+            BridgeMaterial.getByPrefixAndSuffix(
+                    woodTypes,
+                    Arrays.asList("_sign"),
+                    AlmostBoolean.YES
+                    // , ...
+            ), "sign_post", "sign"));
+
+    public static final Set<Material> WALL_SIGNS = Collections.unmodifiableSet(addBlocks(
+            BridgeMaterial.getByPrefixAndSuffix(
+                    woodTypes,
+                    Arrays.asList("_wall_sign"),
+                    AlmostBoolean.YES
+                    // , ...
+            ), "wall_sign"));
+
     public static final Set<Material> WOOL_BLOCKS = Collections.unmodifiableSet(addBlocks(
             BridgeMaterial.getBySuffix(
                     "_wool", 
@@ -555,6 +571,17 @@ public class MaterialUtil {
 
     public static boolean isLog(final Material mat) {
         return LOGS.contains(mat);
+    }
+
+    public static Material wallSignToSign(final Material mat) {
+        if(!WALL_SIGNS.contains(mat)) {
+            throw new IllegalArgumentException("Not a Wall_Sign!");
+        }
+        Material result = Material.getMaterial(mat.name().replace("wall_", ""));
+        if(result == null) {
+            result = Material.getMaterial("sign_post");
+        }
+        return result;
     }
 
 }

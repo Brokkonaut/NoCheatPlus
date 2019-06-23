@@ -14,6 +14,9 @@
  */
 package fr.neatmonster.nocheatplus.utilities;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -42,6 +45,22 @@ public class Misc {
             list.remove(item);
         }
         list.add(0, item);
+    }
+
+    public static <T> T[] concatenate(T[] array, Collection<T>... collections) {
+        List<T> result = Arrays.asList(array);
+        for(Collection<T> collection : collections) {
+            result.addAll(collection);
+        }
+        return (T[]) result.toArray();
+    }
+
+    public static <T> T[] toArray(Collection<T>... collections) {
+        List<T> result = new ArrayList<T>();
+        for(Collection<T> collection : collections) {
+            result.addAll(collection);
+        }
+        return (T[]) result.toArray();
     }
 
 }
