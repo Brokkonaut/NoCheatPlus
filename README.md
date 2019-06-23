@@ -1,7 +1,7 @@
-Attempted to update to 1.14, someone else pick this up, mostly method changes and conflicts with signs from what I recall.
+Fork of NoCheatPlus that aims to implement support for 1.14, based on https://github.com/CaptainObvious0/NoCheatPlus
 
 ### Build Status
-[![Build Status](https://semaphoreci.com/api/v1/captainobvious0/nocheatplus/branches/master/badge.svg)](https://semaphoreci.com/captainobvious0/nocheatplus)
+[![Build Status](https://ci.codemc.org/buildStatus/icon?job=FearGames%2FNoCheatPlus-1.14)](https://ci.codemc.org/job/FearGames/job/NoCheatPlus-1.14/)
 
 NoCheatPlus
 ---------
