@@ -27,6 +27,8 @@ import fr.neatmonster.nocheatplus.utilities.map.BlockFlags;
 import fr.neatmonster.nocheatplus.utilities.map.BlockProperties;
 import fr.neatmonster.nocheatplus.utilities.map.BlockProperties.BlockProps;
 
+import java.util.Arrays;
+
 @SuppressWarnings("deprecation")
 public class BlocksMC1_8 implements BlockPropertiesSetup {
 
@@ -45,11 +47,11 @@ public class BlocksMC1_8 implements BlockPropertiesSetup {
 
         // Melon/pumpkin/like.
         BlockProps props = new BlockProps(BlockProperties.woodAxe, 1f, BlockProperties.secToMs(1.45, 0.70, 0.325, 0.2, 0.13, 0.075), 3f);
-        for (Material mat : Misc.concatenate(new Material[] {
+        for (Material mat : Misc.concatenate(Arrays.asList(new Material[] {
                 BridgeMaterial.MELON,
                 Material.PUMPKIN,
                 Material.JACK_O_LANTERN,
-        },
+        }),
 				// Same core breaking times, but behave different on efficiency + other tool (?):
 				MaterialUtil.SIGNS,
 				MaterialUtil.WALL_SIGNS

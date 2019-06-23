@@ -1115,13 +1115,13 @@ public class BlockProperties {
         setFlag(Material.ICE, F_ICE);
 
         // Not ground (!).
-        for (final Material mat : Misc.toArray(MaterialUtil.WALL_SIGNS, MaterialUtil.SIGNS)) {
+        for (final Material mat : Misc.concatenate(MaterialUtil.WALL_SIGNS, MaterialUtil.SIGNS)) {
             // TODO: Might keep solid since it is meant to be related to block shapes rather ("original mc value").
             maskFlag(mat, ~(F_GROUND | F_SOLID));
         }
 
         // Ignore for passable.
-        for (final Material mat : Misc.concatenate(new Material[]{
+        for (final Material mat : Misc.concatenate(Arrays.asList(new Material[]{
                 // More strictly needed.
                 BridgeMaterial.STONE_PRESSURE_PLATE,
                 BridgeMaterial.get("DIODE_BLOCK_ON"),
@@ -1133,7 +1133,7 @@ public class BlockProperties {
                 BridgeMaterial.CAKE,
                 // Workarounds.
                 //				Material.COCOA,
-        },
+        }),
                 // More strictly needed.
                 MaterialUtil.SIGNS,
                 MaterialUtil.WALL_SIGNS
