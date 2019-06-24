@@ -16,6 +16,7 @@ package fr.neatmonster.nocheatplus.compat.bukkit;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.bukkit.Material;
 
@@ -100,6 +101,8 @@ public class MCAccessBukkitModern extends MCAccessBukkit {
             0.125);
     private static final BukkitShapeModel MODEL_XZ100_HEIGHT8_3 = new BukkitStatic(
             0.375);
+    private static final BukkitShapeModel MODEL_XZ100_HEIGHT_CAMPFIRE = new BukkitStatic(
+            0.4375);
     private static final BukkitShapeModel MODEL_XZ100_HEIGHT16_9 = new BukkitStatic(
             0.5625);
     private static final BukkitShapeModel MODEL_XZ100_HEIGHT4_3 = new BukkitStatic(
@@ -261,6 +264,18 @@ public class MCAccessBukkitModern extends MCAccessBukkit {
                 )) {
             addModel(mat, MODEL_SINGLE_CHEST);
         }
+
+        // Lantern
+        addModel(Material.LANTERN, MODEL_XZ100_HEIGHT16_9); // FIXME: breaks pre 1.14 compatibility
+
+        // Lectern
+        addModel(Material.LECTERN, MODEL_XZ100_HEIGHT8_7); // FIXME: breaks pre 1.14 compatibility
+
+        // Campfire
+        addModel(Material.CAMPFIRE, MODEL_XZ100_HEIGHT_CAMPFIRE); // FIXME: breaks pre 1.14 compatibility
+
+        // Grindstone
+        addModel(Material.GRINDSTONE, MODEL_XZ100_HEIGHT8_7); // FIXME: breaks pre 1.14 compatibility
 
         // Beds
         for (Material mat : MaterialUtil.BEDS) {

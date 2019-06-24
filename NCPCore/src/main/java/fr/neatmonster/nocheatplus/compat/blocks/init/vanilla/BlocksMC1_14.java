@@ -19,6 +19,7 @@ import fr.neatmonster.nocheatplus.compat.blocks.BlockPropertiesSetup;
 import fr.neatmonster.nocheatplus.compat.blocks.init.BlockInit;
 import fr.neatmonster.nocheatplus.config.WorldConfigProvider;
 import fr.neatmonster.nocheatplus.logging.StaticLog;
+import fr.neatmonster.nocheatplus.utilities.map.BlockProperties;
 import org.bukkit.Material;
 
 public class BlocksMC1_14 implements BlockPropertiesSetup {
@@ -108,11 +109,11 @@ public class BlocksMC1_14 implements BlockPropertiesSetup {
 		Solid custom-hitbox blocks
 		 */
 
-        //BlockInit.setAs("BELL", Material.CHEST); FIXME
-        //BlockInit.setAs("CAMPFIRE", Material.BRICK_SLAB); FIXME
-        //BlockInit.setAs("GRINDSTONE", Material.CHEST); FIXME
-        //BlockInit.setAs("LANTERN", Material.SEA_PICKLE); FIXME
-        //BlockInit.setAs("LECTERN", Material.ENCHANTING_TABLE); FIXME
+        BlockInit.setAs("BELL", Material.IRON_BLOCK);
+        BlockInit.setAs("CAMPFIRE", Material.OAK_SLAB);
+        BlockInit.setAs("GRINDSTONE", Material.BREWING_STAND);
+        BlockInit.setAs("LANTERN", Material.IRON_DOOR);
+        BlockInit.setAs("LECTERN", Material.OAK_STAIRS); // FIXME: still a bit glitchy
         BlockInit.setAs("BAMBOO", Material.END_ROD);
 
 		/*
