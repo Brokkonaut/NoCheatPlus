@@ -74,6 +74,9 @@ public class CatchAllAdapter extends BaseAdapter {
             // TODO: Is this a problem, as the server has the player so it could break a block)?
             return;
         }
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         final IPlayerData pData = DataManager.getPlayerDataSafe(player);
         if (pData == null) {
             StaticLog.logWarning("Failed to fetch player data with " + event.getPacketType() + " for: " + player.toString());

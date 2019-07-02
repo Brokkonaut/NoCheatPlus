@@ -58,6 +58,9 @@ public class OutgoingPosition extends BaseAdapter {
         }
         final long time = System.currentTimeMillis();
         final Player player = event.getPlayer();
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         final IPlayerData pData = DataManager.getPlayerData(player);
         // TODO: In future multiple checks might use this (!)
         if (pData.isCheckActive(CheckType.NET_FLYINGFREQUENCY, player)) {

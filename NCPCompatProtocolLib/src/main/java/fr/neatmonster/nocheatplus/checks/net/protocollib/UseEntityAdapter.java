@@ -129,6 +129,9 @@ public class UseEntityAdapter extends BaseAdapter {
             // TODO: Warn once?
             return;
         }
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         final IPlayerData pData = DataManager.getPlayerData(player);
 
         final NetData data = pData.getGenericInstance(NetData.class);

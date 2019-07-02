@@ -150,6 +150,9 @@ public class SoundDistance extends BaseAdapter {
         }
 
         final Player player = event.getPlayer();
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         final IPlayerData pData = DataManager.getPlayerData(player);
         if (!pData.isCheckActive(CheckType.NET_SOUNDDISTANCE, player)) {
             return;

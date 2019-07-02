@@ -158,6 +158,9 @@ public class MovingFlying extends BaseAdapter {
             return;
         }
         final Player player = event.getPlayer();
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         final IPlayerData pData = DataManager.getPlayerDataSafe(player);
         final NetData data = pData.getGenericInstance(NetData.class);
         final AlmostBoolean matched = data.teleportQueue.processAck(teleportId);
@@ -192,6 +195,9 @@ public class MovingFlying extends BaseAdapter {
             // TODO: Need config?
             counters.add(ProtocolLibComponent.idNullPlayer, 1, primaryThread);
             event.setCancelled(true);
+            return;
+        }
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
             return;
         }
 

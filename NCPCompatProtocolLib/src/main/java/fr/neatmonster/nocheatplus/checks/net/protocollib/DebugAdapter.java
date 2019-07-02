@@ -36,6 +36,9 @@ public class DebugAdapter extends BaseAdapter {
     @Override
     public void onPacketReceiving(PacketEvent event) {
         final Player player = event.getPlayer();
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         if (DataManager.getPlayerDataSafe(player).isDebugActive(CheckType.NET)) {
             debug(player, "packet: " + event.getPacketType());
         }

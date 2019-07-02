@@ -64,6 +64,9 @@ public class KeepAliveAdapter extends BaseAdapter {
             event.setCancelled(true);
             return;
         }
+        if (player instanceof com.comphenix.protocol.injector.server.TemporaryPlayer) {
+            return;
+        }
         // Always update last received time.
         final IPlayerData pData = DataManager.getPlayerDataSafe(player);
         final NetData data = pData.getGenericInstance(NetData.class);
